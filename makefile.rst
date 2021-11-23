@@ -51,6 +51,7 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 Normally, you would *compile this collection of code by executing the following command*:
 
 .. code-block:: c
+
 	gcc -o hellomake hellomake.c hellofunc.c -I.
 
 This compiles the two .c files and names the executable hellomake. The -I. is included so that gcc will look in the current directory (.) for the include file hellomake.h. Without a makefile, the typical approach to the test/modify/debug cycle is to use the up arrow in a terminal to go back to your last compile command so you don't have to type it each time, especially once you've added a few more .c files to the mix.
