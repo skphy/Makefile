@@ -19,19 +19,18 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 
        as The output of this line has no spaces at the beginning.sasasas .
 
+	#include <hellomake.h>
+
+	int main() {
+	  // call a function in another file
+	  myPrintHelloMake();
+
+	  return(0);
+	}
+
 
 **hellomake.c**
 
-
-.. code-block:: ruby
-   :linenos:
-
-   Some more Ruby code.       
-
-.. code-block:: ruby
-   :linenos:
-
-   include <hellomake.h>
 
 
 #include <hellomake.h>
