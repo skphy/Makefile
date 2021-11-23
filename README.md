@@ -19,9 +19,11 @@ Automatic creation
     
     if you use `code-block` or `vscode`, you can generate automatically;
     
+    
     **for code-block **
     
-        see the link: https://cbfortran.sourceforge.io/
+        see the link: https://cbfortran.sourceforge.io/ or google (.^.)
+    
     
     **for vscode***
     
