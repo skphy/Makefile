@@ -1,6 +1,7 @@
 A Simple Makefile Tutorial
 ==========================
 
+(The instruction for makefile of Fortran files are the same!!)
 
 Makefiles are a simple way to organize code compilation. This tutorial does not even scratch the surface of what is possible using make, but is intended as a starters guide so that you can quickly and easily create your own makefiles for small to medium-sized projects.
 
