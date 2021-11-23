@@ -15,6 +15,11 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
        The output of this line has no spaces at the beginning.
 ---sk
 
+.. code-block:: c
+
+       as The output of this line has no spaces at the beginning.sasasas .
+
+
 **hellomake.c**
 
 
