@@ -10,7 +10,7 @@ A Simple Example
 Let's start off with the ``following three files, hellomake.c, hellofunc.c, and hellomake.h``, which would represent a typical main program, some functional code in a separate file, and an include file, respectively.
 hellomake.c	hellofunc.c	hellomake.h
 
-**
+``
 #include <hellomake.h>
 
 int main() {
@@ -19,7 +19,7 @@ int main() {
 
   return(0);
 }
-**
+``
 	
 **
 #include <stdio.h>
