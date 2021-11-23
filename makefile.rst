@@ -11,12 +11,23 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 	
 
 .. code-block::
-	xThe output of this line starts with four spaces.
-.. code-block::
-
        The output of this line has no spaces at the beginning.
 
 **hellomake.c**
+
+.. code-block:: fortran
+       The output of this line has no spaces at the beginning.
+
+.. code-block:: ruby
+   :linenos:
+
+   Some more Ruby code.       
+
+.. code-block:: ruby
+   :linenos:
+
+   include <hellomake.h>
+
 
 #include <hellomake.h>
 
