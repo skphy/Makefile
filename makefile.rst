@@ -8,9 +8,10 @@ A Simple Example
 ----------------
 
 Let's start off with the ``following three files, hellomake.c, hellofunc.c, and hellomake.h``, which would represent a typical main program, some functional code in a separate file, and an include file, respectively.
-hellomake.c	hellofunc.c	hellomake.h
+	
 
-``
+**hellomake.c**
+
 #include <hellomake.h>
 
 int main() {
@@ -19,9 +20,10 @@ int main() {
 
   return(0);
 }
-``
-	
-**
+
+
+**hellofunc.c**
+
 #include <stdio.h>
 #include <hellomake.h>
 
@@ -31,16 +33,17 @@ void myPrintHelloMake(void) {
 
   return;
 }
-**
 	
-
+**hellomake.h**
 /*
 example include file
 */
 
 void myPrintHelloMake(void);
 
-Normally, you would compile this collection of code by executing the following command:
+
+
+Normally, you would *compile this collection of code by executing the following command*:
 
 gcc -o hellomake hellomake.c hellofunc.c -I.
 
