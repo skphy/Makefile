@@ -81,6 +81,7 @@ Makefile 2
 ----------
 
 .. code-block:: c
+
 	CC=gcc
 	CFLAGS=-I.
 
