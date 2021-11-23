@@ -11,8 +11,10 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 	
 
 .. code-block::
-		The output of this line starts with four spaces.
+	xThe output of this line starts with four spaces.
+.. code-block::
 
+       The output of this line has no spaces at the beginning.
 
 **hellomake.c**
 
