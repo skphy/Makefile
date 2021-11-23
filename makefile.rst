@@ -11,9 +11,7 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 	
 
 .. code-block::
-   :caption: A cool example
-
-       The output of this line starts with four spaces.
+		The output of this line starts with four spaces.
 
 
 **hellomake.c**
