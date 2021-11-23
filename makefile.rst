@@ -41,6 +41,7 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 	}
 	
 **hellomake.h**
+
 .. code-block:: c
 	/*
 	example include file
@@ -65,8 +66,10 @@ The simplest makefile you could create would look something like:
 Makefile 1
 ----------
 
-hellomake: hellomake.c hellofunc.c
-     gcc -o hellomake hellomake.c hellofunc.c -I.
+.. code-block:: c
+
+	hellomake: hellomake.c hellofunc.c
+	     gcc -o hellomake hellomake.c hellofunc.c -I.
 
 If you put this rule into a file called Makefile or makefile and then type make on the command line it will execute the compile command as you have written it in the makefile. Note that make with no arguments executes the first rule in the file. Furthermore, by putting the list of files on which the command depends on the first line after the :, make knows that the rule hellomake needs to be executed if any of those files change. Immediately, you have solved problem #1 and can avoid using the up arrow repeatedly, looking for your last compile command. However, the system is still not being efficient in terms of compiling only the latest changes.
 
@@ -77,11 +80,12 @@ In order to be a bit more efficient, let's try the following:
 Makefile 2
 ----------
 
-CC=gcc
-CFLAGS=-I.
+.. code-block:: c
+	CC=gcc
+	CFLAGS=-I.
 
-hellomake: hellomake.o hellofunc.o
-     $(CC) -o hellomake hellomake.o hellofunc.o
+	hellomake: hellomake.o hellofunc.o
+	     $(CC) -o hellomake hellomake.o hellofunc.o
 
 So now we've defined some constants CC and CFLAGS. It turns out these are special constants that communicate to make how we want to compile the files hellomake.c and hellofunc.c. In particular, the macro CC is the C compiler to use, and CFLAGS is the list of flags to pass to the compilation command. By putting the object files--hellomake.o and hellofunc.o--in the dependency list and in the rule, make knows it must first compile the .c versions individually, and then build the executable hellomake.
 
@@ -90,16 +94,17 @@ Using this form of makefile is sufficient for most small scale projects. However
 Makefile 3
 ----------
 
+.. code-block:: c
 
-CC=gcc
-CFLAGS=-I.
-DEPS = hellomake.h
+	CC=gcc
+	CFLAGS=-I.
+	DEPS = hellomake.h
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	%.o: %.c $(DEPS)
+		$(CC) -c -o $@ $< $(CFLAGS)
 
-hellomake: hellomake.o hellofunc.o 
-	$(CC) -o hellomake hellomake.o hellofunc.o 
+	hellomake: hellomake.o hellofunc.o 
+		$(CC) -o hellomake hellomake.o hellofunc.o 
 
 This addition first creates the macro DEPS, which is the set of .h files on which the .c files depend. Then we define a rule that applies to all files ending in the .o suffix. The rule says that the .o file depends upon the .c version of the file and the .h files included in the DEPS macro. The rule then says that to generate the .o file, make needs to compile the .c file using the compiler defined in the CC macro. The -c flag says to generate the object file, the -o $@ says to put the output of the compilation in the file named on the left side of the :, the $< is the first item in the dependencies list, and the CFLAGS macro is defined as above.
 
@@ -108,47 +113,51 @@ As a final simplification, let's use the special macros $@ and $^, which are the
 Makefile 4
 ----------
 
-CC=gcc
-CFLAGS=-I.
-DEPS = hellomake.h
-OBJ = hellomake.o hellofunc.o 
+.. code-block:: c
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	CC=gcc
+	CFLAGS=-I.
+	DEPS = hellomake.h
+	OBJ = hellomake.o hellofunc.o 
 
-hellomake: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	%.o: %.c $(DEPS)
+		$(CC) -c -o $@ $< $(CFLAGS)
+
+	hellomake: $(OBJ)
+		$(CC) -o $@ $^ $(CFLAGS)
 
 So what if we want to start putting our .h files in an include directory, our source code in a src directory, and some local libraries in a lib directory? Also, can we somehow hide those annoying .o files that hang around all over the place? The answer, of course, is yes. The following makefile defines paths to the include and lib directories, and places the object files in an obj subdirectory within the src directory. It also has a macro defined for any libraries you want to include, such as the math library -lm. This makefile should be located in the src directory. Note that it also includes a rule for cleaning up your source and object directories if you type make clean. The .PHONY rule keeps make from doing something with a file named clean.
 
 Makefile 5
 ----------
 
-IDIR =../include
-CC=gcc
-CFLAGS=-I$(IDIR)
+.. code-block:: c
 
-ODIR=obj
-LDIR =../lib
+	IDIR =../include
+	CC=gcc
+	CFLAGS=-I$(IDIR)
 
-LIBS=-lm
+	ODIR=obj
+	LDIR =../lib
 
-_DEPS = hellomake.h
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+	LIBS=-lm
 
-_OBJ = hellomake.o hellofunc.o 
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+	_DEPS = hellomake.h
+	DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+	_OBJ = hellomake.o hellofunc.o 
+	OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(ODIR)/%.o: %.c $(DEPS)
+		$(CC) -c -o $@ $< $(CFLAGS)
 
-hellomake: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	hellomake: $(OBJ)
+		$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
-.PHONY: clean
+	.PHONY: clean
 
-clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+	clean:
+		rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
 
 So now you have a perfectly good makefile that you can modify to manage small and medium-sized software projects. You can add multiple rules to a makefile; you can even create rules that call other rules. For more information on makefiles and the make function, check out the GNU Make Manual, which will tell you more than you ever wanted to know (really). 
