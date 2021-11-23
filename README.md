@@ -3,7 +3,9 @@ Makefile
     
 **how to create a make file for a C or a Fortran project?**
 
-    -- Just read the html file by downloading and opening in your browser, 
+    1. just read makefile.rst for the instructions,   
+    OR
+    2. read the html file by downloading and opening in your browser, 
        a very nice and cool explanation.
     
     skumar, 2021
