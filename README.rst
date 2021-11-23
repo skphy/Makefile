@@ -6,8 +6,3 @@ Makefile
     
     Source: https://cs.colby.edu/maxwell/courses/tutorials/maketutor/
     
-Numbered list
-^^^^^^^^^^^^^
-    #. number list 1
-    1. number list 1, too.
-    
