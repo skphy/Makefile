@@ -10,6 +10,7 @@ A Simple Example
 Let's start off with the ``following three files, hellomake.c, hellofunc.c, and hellomake.h``, which would represent a typical main program, some functional code in a separate file, and an include file, respectively.
 	
 **hellomake.c**
+
 .. code-block:: c
 
        //*comments*//
@@ -25,6 +26,7 @@ Let's start off with the ``following three files, hellomake.c, hellofunc.c, and 
 
 
 **hellofunc.c**
+
 .. code-block:: c
 
        //*comments*//
