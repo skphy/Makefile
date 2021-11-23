@@ -22,11 +22,11 @@ Automatic creation
     
     if you use `code-block` or `vscode`, you can generate automatically;
     
-    **for code-block: **
+    **for code-block **
     
         see the link: https://cbfortran.sourceforge.io/
     
-    **for *vscode*: **
+    **for vscode***
     
         see the link: https://earthly.dev/blog/vscode-make/
     
