@@ -6,5 +6,7 @@ Makefile
     -- Just read the html file by downloading and opening in your browser, 
        a very nice and cool explanation.
     
+    skumar, 2021
+    
     Adapted from the link: https://cs.colby.edu/maxwell/courses/tutorials/maketutor/
     
